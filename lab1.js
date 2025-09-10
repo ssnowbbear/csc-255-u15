@@ -35,3 +35,32 @@ for (var _i = 0, _a = [1, 2, 3, 4]; _i < _a.length; _i++) {
     var v = _a[_i];
     console.log(v);
 }
+//takes in x, a number
+//returns x+2, another number
+function addTwo(x) {
+    return x + 2;
+}
+//takes in s which is a string
+//and returns its length, a number
+function strLen(s) {
+    return s.length;
+}
+//***First 10 Fibonacci numbers*** // (n-1)+(n-2)
+var j = 10;
+function Fibonacci(j) {
+    var fib = [];
+    for (var p = 0; p < j; p++) {
+        if (p == 0) {
+            fib.push(p);
+        }
+        if (p == 1) {
+            fib.push(p);
+        }
+        fib.push((p - 1) + (p - 2));
+    }
+    return fib;
+}
+console.log(Fibonacci(10));
+//***Return sum of 'n' Fibonacci numbers***
+//***Function that returns true if 'x' is prime
+//and otherwise returns false***

@@ -1,63 +1,43 @@
-//console.log('hello')
-
-/* while(true){let a = 3; const b = 4; break}
-console.log(a,b) //gives compilation error */
-
-let b : boolean = true
-b=false
-
-const s : string = 'I am a string. I hold text'
-
-const x : number = 3
-const ar : number[] = [12,4,2]
-
-ar.push(3) //[12,4,2,3]
-
-//deliberate use case
-if(Math.random()<.5) var z = 7
-else var z=3
-
-//console.log(z)
-
-/* const grade = 87
-if (grade>=90){console.log('A')}
-else if(grade>=80){console.log('B')}
-else if(grade>=70){console.log('C')}
-else if(grade>=60){console.log('D')}
-else {console.log('F')}
- */
-
-//curly braces can be left off for simple statement lines
-
-//forloop syntax:
-    //initializer; boolean condition; increment
-//for(let i=0; i<10; i++){console.log(i)} //sometimes i<ar.length for arrays
-
-//syntactically short version of this^
-
-let i = 0;
-while(i<10){
-  //  console.log(i) 
-    i+=1;
-} //i++, or i = i +1
-
-// 'in' calls the keys(index), use of in typescript
-
-for(const v of [1,2,3,4]){
-    console.log(v)
+//***First 10 Fibonacci numbers*** // (n-1)+(n-2)
+function Fibonacci(j:number):number[]{ // 'j' is whatever is passed in when function called Fibonacci(12)
+    let fib:number[]=[]
+    for(let p=0; p<j; p++){
+        if(p==0){
+            fib.push(p)
+        }
+        if(p==1){
+            fib.push(p)
+        }
+        //[0,1] 
+        // fib[0]+fib[1], fib[1]+fib[2], fib[2]+fib[3]
+        if(p>1){
+            fib.push((fib[p-1])+(fib[p-2]))
+        }
+    }
+    return fib
 }
+console.log(Fibonacci(10))
 
-//takes in x, a number
-//returns x+2, another number
-
-function addTwo(x:number):number{
-    return x+2;
+//***Return sum of 'n' Fibonacci numbers***
+function FibSum(k:number):number{
+    let j:number[] = Fibonacci(k)
+    let sum = 0
+    for(let i = 0; i<j.length; i++){
+        sum+=j[i];
+    }
+    return sum
 }
+console.log(FibSum(10))
 
-//takes in s which is a string
-//and returns its length, a number
-
-function strLen(s:string):number{
-    return s.length
+//***Function that returns true if 'x' is prime
+//and otherwise returns false*** DID NOT QUITE FINISH
+function primes(x:number):boolean{
+    if(x<=1){  
+        return false;
+    }
+    for(let i=2;i<x;i++){
+        if(x%1==0) return false;
+    }
+    return true
 }
-
+console.log(primes(27))
