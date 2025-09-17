@@ -19,9 +19,9 @@
 
 /***Cubes of numbers***/
 //function cubes(x:number): number (may not need)
-let nums1 = [2,34,1000,8113,1381,27,39,51];
+const nums1 = [2,34,1000,8113,1381,27,39,51];
 
-let cube = x=>x**3
+let cube = x => x**3;
 console.log(cube(3))
 
 /***Sum***/
@@ -34,12 +34,46 @@ let min3 = nums1.reduce((a,b)=>b<a?b:a)
 console.log('min2:', min2, 'min3:', min3)
 
 /***Even numbers***/ // (x=>x%2==0)
-for()
+function GetEvnNums(number: number[]): number[]{
+    const evnNums: number[] = [];
+    for(let i = 0; i<nums1.length;i++){
+        if(nums1[i]%2==0){
+            evnNums.push(nums1[i]);
+        }
+    }
+    return evnNums;
+}
+console.log('Evens:',GetEvnNums(nums1))
 
 /***Count of even numbers***/ //arrays .length property?
+console.log('# Evens:',GetEvnNums(nums1).length)
 
 /***Sum of evens***/
+let evnSum = 0;
+for(let i=0;i<GetEvnNums(nums1).length;i++){
+    evnSum+=GetEvnNums(nums1)[i]
+}
+console.log('Sum of evens:',evnSum)
 
 /***Smallest number > 1000***/
+let smllThsnds:number[] = []
+for(let i=0;i<nums1.length;i++)
+    if(nums1[i]>1000){
+        smllThsnds.push(nums1[i])
+    }
+const smllThsnd: number = Math.min(...smllThsnds)
+console.log('Smallest number > 1000:',smllThsnd)
 
 /***Number of values > average***/
+let grtrAvg:number[] = [];
+let nums1Sum = 0
+for(let i=0;i<nums1.length;i++){
+    nums1Sum+=nums1[i];
+}
+let avg1 = nums1Sum/nums1.length;
+for(i=0;i<nums1.length;i++){
+    if(nums1[i]>avg1){
+        grtrAvg.push(nums1[i])
+    }
+}
+console.log('Numbers > the average:',grtrAvg.length)

@@ -57,11 +57,11 @@ const words = 'This is a test      string   to helps us this is a test string   
 console.log(words)
 
 
-/* const freq : Record<string,number> = {}
+const freq : Record<string,number> = {}
 for(const word of words)
     if(word in freq) freq[word]++; //+=1 freq[word]=freq[word]+1
     else freq[word]
-console.log(freq) */
+console.log(freq)
 
 /* const freq : Record<string,number> = {}
 for(const word of words) freq[word] = (freq[word]??0)+1
