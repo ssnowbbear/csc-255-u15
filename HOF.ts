@@ -27,7 +27,7 @@ for(let i=0;i<comfRange.length;i++){
     comfSum+=comfRange[i]
 }
 let comfAvg = comfSum/comfRange.length
-console.log('Average of the comfort range:',comfAvg,'\u00B0C')
+console.log('Average of the comfort range:',comfAvg,'\u00B0C') //'\u00B0' = degree symbol
 
 // 2) Sort array of strings using array built-in sort method.
 //write function to pass into the array's sort function
