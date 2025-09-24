@@ -92,6 +92,13 @@ function sumPrimes(limit:number):number{
 
 console.log('The sum of prime numbers less than 50,000 =',sumPrimes(50000))
 
-//Print the sum of all the primes between 25,000 and 50,000
-//In the above code, we created primes, an array containing all primes <100,000.
-//How would we instead make an array containing the first 100,000 primes?
+
+// Honestly, spent three hours on the previous one. Made three other files including a python file
+// Just to find out google gemini was giving me the wrong total 
+// for what the sum of prime numbers under 50,000 was and now I have to study for a calculus Exam that got moved
+// up a day sooner. Yeehaw
+
+//TRY TO COME BACK TO AT SOME POINT:
+    //Print the sum of all the primes between 25,000 and 50,000
+    //In the above code, we created primes, an array containing all primes <100,000.
+    //How would we instead make an array containing the first 100,000 primes?
