@@ -15,7 +15,8 @@ type Collection<E> = {
     peek:()=>E,
     pop:()=>E,
     size:()=>number,
-    isEmpty:()=>boolean
+    isEmpty:()=>boolean,
+    toString?:()=>string
 }
 
 interface Stack<E> extends Collection<E> {}
@@ -101,7 +102,8 @@ function memQueue<E>():Queue<E>{
     function pop(){ return ar[i++] }
     function size(){ return ar.length - i }
     function isEmpty(){ return size()<=0 }
-    return{push,peek,pop,size,isEmpty}
+    function toString():string{ return ar.slice(i).join }
+    return{push,peek,pop,size,isEmpty,toString}
 }
 // do console.log for above material 
 
@@ -123,3 +125,10 @@ console.log(q.size())
 type list<E> = null | {val:E,next:List<E>}
 type RPS = 'rock' | 'paper' | 'scissors'
 const rps : RPS = 'rock'
+
+//hold alt to move line with arrow keys
+//select variable and press ctrl+D to select variable of same name one by one
+//use ctrl+shift+L to select all variables of same name
+//VERY important to look at console on webpage
+//<span>[</span> code on html page <span>]</span> -> adds brackets around stuff
+    //good for lists
