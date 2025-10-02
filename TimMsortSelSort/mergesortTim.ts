@@ -36,3 +36,5 @@ function msort(arr:number[]):number[]{
 };
 
 //look online for the rest of code, start scrolling alot
+
+//if you hold alt, you can move a whole line with the arrow keys
