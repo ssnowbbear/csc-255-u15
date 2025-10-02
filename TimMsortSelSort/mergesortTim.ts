@@ -28,6 +28,7 @@ function msort(arr:number[]):number[]{
             let popped1 = arrays
             today.push(merge(arrays.pop()!,arrays.pop()!))
         }
+        if(arrays.length==1)today.push(arrays[0])
         arrays = today
         today = []
     }
