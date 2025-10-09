@@ -30,7 +30,8 @@ console.log(testCons)
 function toString<E>(xs:List<E>):string{
     if(xs == null) return '[]' // or 'null'
     return xs.val + ' --> ' + toString(xs.next);
-} // look in video, didnt get the rest of the function
+} 
+
 console.log(toString(cons('Zach',testCons)))
 
 // len

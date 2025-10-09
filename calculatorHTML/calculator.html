@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator with Shunting Algorithm</title>
+</head>
+<body>
+    
+    <input type="text" id="input"></input>
+    <button onclick="calculate()">Calculate</button> 
+    
+    <p>Postfix notation: <span id="postfix"></span></p>
+    <p>Result: <span id="result"></span></p>
+
+    <script>
+        function toPostFix(tokenList){
+            outputQ = []
+            operatorS = []
+            precedence = {'-':1,'+':1, '*':2,'/':2}
+
+            for( const token of tokenList){
+                //if numner, push to output Q
+                if(!isNaN(token)){
+                    outputQ.push(token)
+                }
+                else{
+                    while(precedence[operatorS[operatorS.length-1]]>precedence[token]){
+                        outputQ.push(operatorS.pop())
+                    }
+                    operatorS.push(token)
+                }
+            }
+
+            while(operatorS.length >= 1){
+                outputQ.push(operatorS.pop())
+            }
+            return outputQ
+        }
+
+        function evalPostFix(tokenList){
+            const stack = []
+
+            for(const token of tokenList){
+                //if number, push to stack
+                if(!isNaN(token)){
+                    stack.push(token)
+                }
+                else{
+                    a = stack.pop()
+                    b = stack.pop()
+
+                    // if(token == '+') stack.push(a+b);
+                    // if(token == '-') stack.push(a-b);
+                    // if(token == '*') stack.push(a*b);
+                    // if(token =='/') stack.push(a/b);
+
+                    switch(token){
+                        case '+': stack.push(a+b); break; //need the break!
+                        case '-': stack.push(a-b); break;
+                        case '*': stack.push(a*b); break;
+                        case '/': stack.push(a/b); break;
+                    }
+                }
+            }
+            return stack[0]
+        }
+
+        function calculate(){
+            inputE = document.getElementById("input");
+            postfixE = document.getElementById("postfix");
+            resultE = document.getElementById("result");
+
+            postFixExpr = toPostFix(inputE.value.match(/[0-9]|[+-/*]/g))
+            postfixE.innerHTML = postFixExpr
+            resultE.innerHTML = evalPostFix(postFixExpr)
+            
+            console.log(postFixExpr)
+        }
+    </script>
+</body>
+</html>
