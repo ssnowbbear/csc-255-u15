@@ -4,7 +4,7 @@ function cons(x, xs) {
     return { val: x, next: xs };
 }
 var testCons = cons("Z", cons("a", cons("c", cons("h", cons("!", null)))));
-console.log(testCons); // { val: 'Z', next: {val: 'a', next: null } }
+console.log(testCons); // { val: 'Z', next: { val: 'a', next: { val: 'c', next: [Object] } } }
 function toString(xs) {
     if (xs == null)
         return 'null';
@@ -19,15 +19,140 @@ console.log(toString(test1));
 console.log(solu1);
 console.log(toString(cons('Z', cons('a', cons('c', cons('h', cons('!', null)))))));
 // returns Z -> a -> c -> h -> ! -> null
+console.log(toString(test));
+//returns null
 //3) head function 
 function head(xs) {
-    return xs.val;
+    if (xs == null)
+        return [];
+    return xs.val; //value is the front
 }
 console.log(head(testCons));
-console.log(head(test1)); //'Z'
+console.log(head(test1));
+//'Z'
+console.log(head(test));
+//red squiggle under return but still returns '[]'
 //4) tail function
 function tail(xs) {
-    return xs.next;
+    if (xs == null)
+        return 'null';
+    return xs.next; //
 }
 console.log(toString(tail(testCons)));
 console.log(toString(tail(test1)));
+//a -> c -> h -> ! -> null
+console.log(tail(test));
+//returns 'null'
+//append to end, problem 5
+//convert array to List<E>
+function fromArray(arr) {
+    if (arr.length == 0) {
+        return null;
+    }
+    return { val: arr[0], next: fromArray(arr.slice(1)) }; //removes head of array
+}
+//slice examples 
+var exSlice = [3, 4, 56, 8, 12];
+console.log(exSlice.slice(1), exSlice.slice(2), exSlice); //make copy and leaves array alone
+//returns [ 4, 56, 8, 12 ] [ 56, 8, 12 ] [ 3, 4, 56, 8, 12 ]
+function snoc(value, xs) {
+    if (xs == null) {
+        return { val: value, next: null };
+    }
+    ;
+    return {
+        val: xs.val, next: snoc(value, xs.next)
+    };
+}
+var list = fromArray([1, 2, 3]);
+var newlist = snoc(7, list);
+console.log(toString(newlist));
+//returns 1 -> 2 -> 3 -> 7 -> null
+function at(xs, index) {
+    // '&&' combines two booleans and returns true only if both statements are true. has another usage case for short-circuiting
+    if (index == 0 && xs != null) {
+        return xs.val;
+    }
+    //empty case
+    if (xs == null) {
+        return [];
+    }
+    //move to xs.next
+    if (index > 0) {
+        return at(xs.next, index - 1);
+    }
+}
+var xs = fromArray([1, 5, 7, 9, 3]);
+console.log(at(xs, 3)); //9
+console.log(at(xs, 2)); //7
+console.log(at(test, 0)); //[]
+//merge attempt
+function merge(xs, ys) {
+    //empty or null
+    if (xs == null) {
+        return ys;
+    }
+    if (ys == null) {
+        return xs;
+    }
+    //xs smaller or comes first
+    if (xs.val < ys.val) {
+        return { val: xs.val, next: merge(xs.next, ys) };
+    }
+    //ys smaller
+    else {
+        return { val: ys.val, next: merge(xs, ys.next) };
+    }
+}
+var ys = fromArray([2, 4, 6]);
+var zs = merge(xs, ys);
+var strngEx = fromArray(['Apple', 'Box', 'Zebra', 'Cracker']);
+var strngEx2 = fromArray(['Pancake', 'Turtle', 'Gary']);
+var mrgStrng = merge(strngEx, strngEx2);
+console.log(toString(zs));
+//1 -> 2 -> 4 -> 5 -> 6 -> 7 -> 9 -> 3 -> null (not sorted)
+console.log(toString(mrgStrng));
+//Apple -> Box -> Pancake -> Turtle -> Gary -> Zebra -> Cracker -> null (not sorted)
+//helper for merge-sort 
+function getMiddle(xs) {
+    if (xs == null) {
+        return null;
+    }
+    var slow = xs;
+    var fast = xs.next; //makes slow the end of the first half of the list
+    //slow moves by 1 and fast moves by 2 until the end of the list
+    while (fast != null) {
+        fast = fast.next;
+        if (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+    }
+    return slow;
+}
+function sortLst(xs) {
+    //list empty, one element
+    if (xs == null || xs.next == null) {
+        return xs;
+    }
+    //divide and find middle
+    var middle = getMiddle(xs);
+    //splits the list into halves
+    var lft = xs;
+    var rght = middle.next;
+    //breaks the link between two halves?
+    middle.next = null;
+    //sorts the list 
+    var lftSort = sortLst(lft);
+    var rghtSort = sortLst(rght);
+    //make one list
+    return merge(lftSort, rghtSort);
+}
+var srtXs = sortLst(xs);
+var srtYs = sortLst(ys);
+console.log(toString(merge(srtXs, srtYs)));
+//1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 9 -> null
+var strngSort = sortLst(strngEx);
+var strngSort2 = sortLst(strngEx2);
+console.log(toString(merge(strngSort, strngSort2)));
+//Apple -> Box -> Cracker -> Gary -> Pancake -> Turtle -> Zebra -> null
