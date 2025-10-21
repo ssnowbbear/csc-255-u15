@@ -150,7 +150,7 @@ function getMiddle<E>(xs:List<E>):List<E>{
     while(fast != null){
         fast=fast.next;
         if(fast != null){
-            slow = slow.next;
+            slow = slow!.next;
             fast = fast.next;
         }
     }
@@ -167,10 +167,10 @@ function sortLst<E extends number | string>(xs:List<E>):List<E>{
 
     //splits the list into halves
     let lft = xs;
-    let rght = middle.next;
+    let rght = middle!.next;
 
-    //breaks the link between two halves?
-    middle.next = null;
+    //breaks the link between two halves
+    middle!.next = null;
 
     //sorts the list 
     let lftSort = sortLst(lft)
@@ -189,3 +189,4 @@ let strngSort = sortLst(strngEx)
 let strngSort2 = sortLst(strngEx2)
 console.log(toString(merge(strngSort,strngSort2)));
     //Apple -> Box -> Cracker -> Gary -> Pancake -> Turtle -> Zebra -> null
+
