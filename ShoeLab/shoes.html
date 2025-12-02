@@ -1,0 +1,100 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head> 
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes</title> 
+    <link rel="stylesheet" href="styledShoes.css">
+    <script src="shoeLab.js" defer></script> 
+
+</head> 
+
+<body> 
+
+    <h1>Shoes Catalog</h1>
+
+    <div id="top-controls">
+        
+        <label for="rating">Choose rating</label> 
+        
+        <select name="rating" id="rating" onchange="update()"> 
+            
+            <option value="0">All</option>
+            <option value="4">4 and up</option> 
+            <option value="3">3 and up</option> 
+            <option value="2">2 and up</option> 
+            <option value="1">1 and up</option> 
+            
+        </select> 
+        
+        <label for="price">Choose price</label> 
+        
+        <select name="price" id="price" onchange="update()"> 
+            
+            <option value="10000">All</option> 
+            <option value="100">under $100</option> 
+            <option value="50">under $50</option> 
+            <option value="25">under $25</option>
+            
+        </select>
+
+        <label for="sort-by">Sort By</label>
+
+        <select id="sort-by" onchange="update()">
+
+            <option value="default">Default (ID)</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating-price-tie">Rating: High to Low</option>
+       
+        </select>
+
+        <input type="checkbox" onchange="toggleImages()" checked id="images" name="toggle-images"> 
+       
+        <label for="images">Images</label>
+
+        <!--Border toggle (hehe, funny joke)-->
+        <input type="checkbox" onchange="toggleBorder()" id="border" name="toggle-border"> 
+        
+        <label for="border">Border</label>
+
+        <span id="cart-cost">Cart Cost: $0.00</span>
+    
+    </div>
+
+    <hr>
+        
+    <!--Brand checkboxes-->
+    <div id="checkboxes">
+
+        <input type="checkbox" onchange="check('Adidas')" id="adidas" name="adidas" value="Adidas"> 
+        <label for="adidas">Adidas</label><br> 
+        
+        <input type="checkbox" onchange="check('Crocs')" id="crocs" name="crocs" value="Crocs"> 
+        <label for="crocs">Crocs</label><br> 
+        
+        <input type="checkbox" onchange="check('Nike')" id="nike" name="nike" value="Nike"> 
+        <label for="nike">Nike</label><br> 
+        
+        <input type="checkbox" onchange="check('Puma')" id="puma" name="puma" value="Puma"> 
+        <label for="puma">Puma</label><br> 
+        
+        <input type="checkbox" onchange="check('Under Armour')" id="under" name="under" value="Under Armour"> 
+        <label for="under">Under Armour</label><br> 
+        
+    </div> 
+
+    <hr>
+
+    <div id="main-container">
+
+        <div id="main">
+            <!--Render stuff-->
+        </div>
+
+    </div> 
+
+</body> 
+</html>

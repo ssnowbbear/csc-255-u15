@@ -1,5 +1,5 @@
 
-"//interface and classes 
+//interface and classes 
 interface User {
     name: string;
     id: number;

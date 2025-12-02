@@ -9,3 +9,8 @@ function twoSum(nums:number[], target:number):[number,number] | null {
     }
 }
 // have to use --target esnext
+
+//LOOK BACK AT CLASS RECORDING. USED REQUIRE ('fs');
+    //num + num
+
+//FOR DUPLICATE, USE SET AND A FOR LOOP
