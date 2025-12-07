@@ -1,5 +1,3 @@
-import { appendFileSync } from "fs"; //dont know why but these keep showing up
-
 const data : string[] = require('fs').readFileSync(0, 'utf8').trim().split(',');
 
 function invalid(x: number) : boolean {
@@ -21,5 +19,7 @@ function chunkString(s: string, size:number): string[] {
     return out;
 };
 
-function ans
-//missing some code
+function ans// missing some code, is different for this solution!!!
+//adventcode website!!!
+
+//do some on your own!!! % = remainder as well!!!
